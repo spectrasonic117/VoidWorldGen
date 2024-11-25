@@ -1,0 +1,5 @@
+name: VoidWorldGen
+version: '${version}'
+main: com.spectrasonic.voidWorldGen.Main
+api-version: '1.19'
+authors: [ Spectrasonic ]
