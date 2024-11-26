@@ -1,4 +1,4 @@
-package com.spectrasonic.voidWorldGen;
+package com.spectrasonic.voidWorldGen.Gen;
 
 import java.util.List;
 import java.util.Random;
@@ -12,6 +12,8 @@ import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
 
+import com.spectrasonic.voidWorldGen.Provider.VoidBiomeProvider;
+
 public class VoidChunkGenerator extends ChunkGenerator {
 
     @Override
@@ -22,19 +24,18 @@ public class VoidChunkGenerator extends ChunkGenerator {
     @Override
     public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ,
                               @NotNull ChunkData chunkData) {
-        // No need to generate noise, we want an empty world
+        // No need to generate noise, its a empty world
     }
 
     @Override
     public void generateSurface(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ,
                                 @NotNull ChunkData chunkData) {
-        // No need to generate surface, we want an empty world
+        // No need to generate surface, its a empty world
     }
 
     @Override
     public void generateBedrock(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ,
                                 @NotNull ChunkData chunkData) {
-        // Place a block of bedrock at 0, 63, 0
         if (chunkX == 0 && chunkZ == 0) {
             chunkData.setBlock(0, 63, 0, Material.BEDROCK);
         }
@@ -43,7 +44,7 @@ public class VoidChunkGenerator extends ChunkGenerator {
     @Override
     public void generateCaves(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ,
                               @NotNull ChunkData chunkData) {
-        // No need to generate caves, we want an empty world
+        // No need to generate caves, its a empty world
     }
 
     @Override
@@ -59,6 +60,6 @@ public class VoidChunkGenerator extends ChunkGenerator {
 
     @Override
     public Location getFixedSpawnLocation(@NotNull World world, @NotNull Random random) {
-        return new Location(world, 0, 64, 0); // Updated spawn location
+        return new Location(world, 0, 64, 0);
     }
 }
