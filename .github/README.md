@@ -16,8 +16,8 @@ bukkit.yml
 
 ```yml
 worlds:
-	world:
-		generator: VoidWorldGen
+    world:
+        generator: VoidWorldGen
 ```
 
 If your world is not called `world`, replace with your world name. You can set VoidWorldGen as generator for the other worlds.
