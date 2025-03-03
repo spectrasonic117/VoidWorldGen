@@ -4,3 +4,13 @@ main: com.spectrasonic.voidWorldGen.Main
 api-version: "1.19"
 authors: [Spectrasonic]
 load: STARTUP
+commands:
+    voidworldgen:
+        description: Reloads the VoidWorldGen configuration
+        usage: /<command>
+        permission: voidworldgen.reload
+
+permissions:
+    voidworldgen.reload:
+        description: Allows reloading the plugin configuration
+        default: op
