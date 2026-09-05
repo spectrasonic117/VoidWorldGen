@@ -3,7 +3,6 @@ package com.spectrasonic.VoidGen;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 import com.spectrasonic.VoidGen.Commands.ReloadCommand;
 import com.spectrasonic.VoidGen.FirstSpawn.FirstSpawnManager;
@@ -31,7 +30,7 @@ public class Main extends JavaPlugin {
     }
 
     @Override
-    public ChunkGenerator getDefaultWorldGenerator(@NotNull String worldName, String id) {
+    public ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
         return new VoidChunkGenerator(this);
     }
 }

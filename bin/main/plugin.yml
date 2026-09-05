@@ -1,6 +1,17 @@
-name: VoidWorldGen
+name: VoidGen
+api: "1.21"
 version: "${version}"
-main: com.spectrasonic.voidWorldGen.Main
-api-version: "1.19"
+main: com.spectrasonic.VoidGen.Main
+api-version: "1.21"
 authors: [Spectrasonic]
 load: STARTUP
+commands:
+    VoidGen:
+        description: Reloads the VoidGen configuration
+        usage: /<command>
+        permission: VoidGen.reload
+
+permissions:
+    VoidGen.reload:
+        description: Allows reloading the plugin configuration
+        default: op

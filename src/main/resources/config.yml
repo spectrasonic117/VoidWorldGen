@@ -3,3 +3,7 @@ FirstSpawn:
     y: 65
     z: 0.5
     direction: SOUTH
+
+# Radius of the grass block circle generated at world origin (0,0)
+# The block at (0, FirstSpawn.y - 1, 0) will be bedrock
+PlatformRadius: 10

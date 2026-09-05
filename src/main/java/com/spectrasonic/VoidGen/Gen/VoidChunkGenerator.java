@@ -43,12 +43,48 @@ public class VoidChunkGenerator extends ChunkGenerator {
     @Override
     public void generateBedrock(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ,
             @NotNull ChunkData chunkData) {
-        if (chunkX == 0 && chunkZ == 0) {
-            for (int x = -4; x <= 4; x++) {
-                for (int z = -4; z <= 4; z++) {
-                    chunkData.setBlock(x, 64, z, Material.BEDROCK);
+        int radius = configManager.getPlatformRadius();
+        int platformY = configManager.getPlatformY();
+
+        int r2 = radius * radius;
+
+        // World-coordinate range covered by this chunk
+        int worldMinX = chunkX * 16;
+        int worldMaxX = worldMinX + 15;
+        int worldMinZ = chunkZ * 16;
+        int worldMaxZ = worldMinZ + 15;
+
+        // Check whether this chunk overlaps with the disk of radius `radius` centered at (0,0)
+        boolean touchesCircle = false;
+        for (int wx = worldMinX; wx <= worldMaxX && !touchesCircle; wx++) {
+            for (int wz = worldMinZ; wz <= worldMaxZ; wz++) {
+                if (wx * wx + wz * wz <= r2) {
+                    touchesCircle = true;
+                    break;
                 }
             }
+        }
+
+        // Check whether the world origin (0,0) lies within this chunk (for the bedrock center)
+        boolean touchesCenter = worldMinX <= 0 && worldMaxX >= 0
+                && worldMinZ <= 0 && worldMaxZ >= 0;
+
+        if (!touchesCircle && !touchesCenter) {
+            return;
+        }
+
+        // First: fill the disk with GRASS_BLOCK. ChunkData uses chunk-local coords (0-15).
+        for (int wx = worldMinX; wx <= worldMaxX; wx++) {
+            for (int wz = worldMinZ; wz <= worldMaxZ; wz++) {
+                if (wx * wx + wz * wz <= r2) {
+                    chunkData.setBlock(wx - worldMinX, platformY, wz - worldMinZ, Material.GRASS_BLOCK);
+                }
+            }
+        }
+
+        // Then: overwrite the center block with bedrock
+        if (touchesCenter) {
+            chunkData.setBlock(-worldMinX, platformY, -worldMinZ, Material.BEDROCK);
         }
     }
 

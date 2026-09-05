@@ -43,6 +43,14 @@ public class ConfigManager {
         return location;
     }
 
+    public int getPlatformRadius() {
+        return Math.max(0, config.getInt("PlatformRadius", 10));
+    }
+
+    public int getPlatformY() {
+        return config.getInt("FirstSpawn.y", 65) - 1;
+    }
+
     private float getYawFromDirection(String direction) {
         return switch (direction.toUpperCase()) {
             case "SOUTH" -> 0F;
