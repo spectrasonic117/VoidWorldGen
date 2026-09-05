@@ -26,21 +26,21 @@ public final class MessageUtils {
         sender.sendMessage(PREFIX.append(deserialize(message)));
     }
 
+    public static void sendRawMessage(CommandSender sender, @NotNull String message) {
+        sender.sendMessage(deserialize(message));
+    }
+
     public static void sendStartupMessage(JavaPlugin plugin) {
         Component[] messages = {
-                deserialize(
-                        "<b><gradient:blue:red>██    ██  ██████  ██ ██████   ██████  ███████ ███    ██</gradient></b>"),
+                deserialize("<gradient:blue:red>██    ██  ██████  ██ ██████   ██████  ███████ ███    ██</gradient>"),
                 deserialize("<gradient:blue:red>██    ██ ██    ██ ██ ██   ██ ██       ██      ████   ██</gradient>"),
                 deserialize("<gradient:blue:red>██    ██ ██    ██ ██ ██   ██ ██   ███ █████   ██ ██  ██</gradient>"),
                 deserialize("<gradient:blue:red> ██  ██  ██    ██ ██ ██   ██ ██    ██ ██      ██  ██ ██</gradient>"),
                 deserialize("<gradient:blue:red>  ████    ██████  ██ ██████   ██████  ███████ ██   ████</gradient>"),
                 Component.empty(),
-                PREFIX.append(
-                        Component.text(plugin.getPluginMeta().getName() + " Plugin Enabled!", NamedTextColor.GREEN)),
-                PREFIX.append(Component.text("Version: ", NamedTextColor.AQUA)
-                        .append(Component.text(plugin.getPluginMeta().getVersion(), NamedTextColor.WHITE))),
-                PREFIX.append(Component.text("Developed by: ", NamedTextColor.RED)
-                        .append(Component.text(plugin.getPluginMeta().getAuthors().toString(), NamedTextColor.WHITE))),
+                deserialize("<green>" + plugin.getPluginMeta().getName() + " Plugin Enabled!</green>"),
+                deserialize("<white>Version: <aqua>" + plugin.getPluginMeta().getVersion() + "</aqua></white>"),
+                deserialize("<white>Developed by: <red>" + plugin.getPluginMeta().getAuthors().toString() + "</red></white>"),
                 DIVIDER
         };
 
@@ -53,7 +53,8 @@ public final class MessageUtils {
         Component[] messages = {
                 DIVIDER,
                 PREFIX.append(
-                        Component.text(plugin.getPluginMeta().getName() + " plugin Disabled!", NamedTextColor.RED)),
+                        Component.text(plugin.getPluginMeta().getName() + " plugin Disabled!",
+                                NamedTextColor.RED)),
                 DIVIDER
         };
 
