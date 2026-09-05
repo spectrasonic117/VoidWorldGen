@@ -1,4 +1,4 @@
-package com.spectrasonic.voidWorldGen.Provider;
+package com.spectrasonic.VoidGen.Provider;
 
 import java.util.List;
 import org.bukkit.block.Biome;

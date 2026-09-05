@@ -1,12 +1,13 @@
-package com.spectrasonic.voidWorldGen;
+package com.spectrasonic.VoidGen;
 
-import com.spectrasonic.voidWorldGen.Gen.VoidChunkGenerator;
-import com.spectrasonic.voidWorldGen.Utils.MessageUtils;
-import com.spectrasonic.voidWorldGen.Commands.ReloadCommand;
-import com.spectrasonic.voidWorldGen.FirstSpawn.FirstSpawnManager;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+
+import com.spectrasonic.VoidGen.Commands.ReloadCommand;
+import com.spectrasonic.VoidGen.FirstSpawn.FirstSpawnManager;
+import com.spectrasonic.VoidGen.Gen.VoidChunkGenerator;
+import com.spectrasonic.VoidGen.Utils.MessageUtils;
 
 public class Main extends JavaPlugin {
 

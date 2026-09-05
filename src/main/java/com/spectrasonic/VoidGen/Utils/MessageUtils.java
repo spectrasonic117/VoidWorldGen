@@ -1,4 +1,4 @@
-package com.spectrasonic.voidWorldGen.Utils;
+package com.spectrasonic.VoidGen.Utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class MessageUtils {
 
     public static final String DIVIDER = "----------------------------------------";
-    public static final String PREFIX = "&7[&dVWG&7] &6»&r ";
+    public static final String PREFIX = "&7[&dVG&7] &6»&r ";
 
     private MessageUtils() {
         // Private constructor to prevent instantiation
@@ -28,10 +28,16 @@ public final class MessageUtils {
 
     public static void sendStartupMessage(JavaPlugin plugin) {
         String[] messages = {
-                DIVIDER,
-                PREFIX + "&f" + plugin.getDescription().getName() + "&a Plugin Enabled!",
-                PREFIX + "&d" + "Version: &b" + plugin.getDescription().getVersion(),
-                PREFIX + "&f" + "Developed by: &c" + plugin.getDescription().getAuthors(),
+
+                "&b██    ██  ██████  ██ ██████   ██████  ███████ ███    ██&r",
+                "&b██    ██ ██    ██ ██ ██   ██ ██       ██      ████   ██&r",
+                "&b██    ██ ██    ██ ██ ██   ██ ██   ███ █████   ██ ██  ██&r",
+                "&b ██  ██  ██    ██ ██ ██   ██ ██    ██ ██      ██  ██ ██&r",
+                "&b  ████    ██████  ██ ██████   ██████  ███████ ██   ████&r",
+                "",
+                PREFIX + "&f" + plugin.getPluginMeta().getName() + "&a Plugin Enabled!",
+                PREFIX + "&d" + "Version: &b" + plugin.getPluginMeta().getVersion(),
+                PREFIX + "&f" + "Developed by: &c" + plugin.getPluginMeta().getAuthors(),
                 DIVIDER
         };
 
@@ -47,7 +53,7 @@ public final class MessageUtils {
     public static void sendShutdownMessage(JavaPlugin plugin) {
         String[] messages = {
                 DIVIDER,
-                PREFIX + "&c" + plugin.getDescription().getName() + " plugin Disabled!",
+                PREFIX + "&c" + plugin.getPluginMeta().getName() + " plugin Disabled!",
                 DIVIDER
         };
 
