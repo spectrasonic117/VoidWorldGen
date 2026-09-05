@@ -27,12 +27,12 @@ public class ReloadCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
             String[] args) {
         if (!sender.hasPermission("voidworldgen.reload")) {
-            MessageUtils.sendMessage(sender, "&cYou don't have permission to use this command!");
+            MessageUtils.sendMessage(sender, "<red>You don't have permission to use this command!</red>");
             return true;
         }
 
         if (args.length == 0 || !args[0].equalsIgnoreCase("reload")) {
-            MessageUtils.sendMessage(sender, "&cUsage: /voidworldgen reload");
+            MessageUtils.sendMessage(sender, "<red>Usage: /voidworldgen reload</red>");
             return true;
         }
 
@@ -49,7 +49,7 @@ public class ReloadCommand implements CommandExecutor, TabCompleter {
                     spawnLoc.getYaw());
         });
 
-        MessageUtils.sendMessage(sender, "&aConfiguration and spawn locations reloaded successfully!");
+        MessageUtils.sendMessage(sender, "<green>Configuration and spawn locations reloaded successfully!</green>");
         return true;
     }
 

@@ -44,7 +44,11 @@ public class VoidChunkGenerator extends ChunkGenerator {
     public void generateBedrock(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ,
             @NotNull ChunkData chunkData) {
         if (chunkX == 0 && chunkZ == 0) {
-            chunkData.setBlock(0, 64, 0, Material.BEDROCK);
+            for (int x = -4; x <= 4; x++) {
+                for (int z = -4; z <= 4; z++) {
+                    chunkData.setBlock(x, 64, z, Material.BEDROCK);
+                }
+            }
         }
     }
 
