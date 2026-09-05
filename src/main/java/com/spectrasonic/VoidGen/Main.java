@@ -1,5 +1,6 @@
 package com.spectrasonic.VoidGen;
 
+import org.bukkit.command.PluginCommand;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -14,13 +15,17 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        new FirstSpawnManager(this);
+        new FirstSpawnManager(this).register();
         ReloadCommand reloadCommand = new ReloadCommand(this);
-        getCommand("voidworldgen").setExecutor(reloadCommand);
-        getCommand("voidworldgen").setTabCompleter(reloadCommand);
+        PluginCommand command = getCommand("voidworldgen");
+        if (command != null) {
+            command.setExecutor(reloadCommand);
+            command.setTabCompleter(reloadCommand);
+        }
         MessageUtils.sendStartupMessage(this);
     }
 
+    @Override
     public void onDisable() {
         MessageUtils.sendShutdownMessage(this);
     }

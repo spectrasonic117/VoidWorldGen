@@ -6,6 +6,8 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public final class MessageUtils {
 
@@ -20,16 +22,8 @@ public final class MessageUtils {
     private MessageUtils() {
     }
 
-    public static void sendMessage(CommandSender sender, String message) {
+    public static void sendMessage(CommandSender sender, @NotNull String message) {
         sender.sendMessage(PREFIX.append(deserialize(message)));
-    }
-
-    public static void sendMessage(CommandSender sender, String message, Object... args) {
-        sender.sendMessage(PREFIX.append(deserialize(String.format(message, args))));
-    }
-
-    public static void sendConsoleMessage(String message) {
-        Bukkit.getConsoleSender().sendMessage(PREFIX.append(deserialize(message)));
     }
 
     public static void sendStartupMessage(JavaPlugin plugin) {
@@ -55,14 +49,6 @@ public final class MessageUtils {
         }
     }
 
-    public static void broadcastMessage(String message) {
-        Bukkit.broadcast(deserialize(message));
-    }
-
-    public static void broadcastMessage(Component message) {
-        Bukkit.broadcast(message);
-    }
-
     public static void sendShutdownMessage(JavaPlugin plugin) {
         Component[] messages = {
                 DIVIDER,
@@ -76,14 +62,10 @@ public final class MessageUtils {
         }
     }
 
-    public static Component deserialize(String message) {
+    public static Component deserialize(@Nullable String message) {
         if (message == null || message.isEmpty()) {
             return Component.empty();
         }
         return MINI_MESSAGE.deserialize(message);
-    }
-
-    public static String serialize(Component component) {
-        return MINI_MESSAGE.serialize(component);
     }
 }

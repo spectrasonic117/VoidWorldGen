@@ -9,7 +9,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.spectrasonic.VoidGen.Config.ConfigManager;
 
-@SuppressWarnings("unused")
 public class FirstSpawnManager implements Listener {
     private final JavaPlugin plugin;
     private final ConfigManager configManager;
@@ -17,6 +16,9 @@ public class FirstSpawnManager implements Listener {
     public FirstSpawnManager(JavaPlugin plugin) {
         this.plugin = plugin;
         this.configManager = ConfigManager.getInstance(plugin);
+    }
+
+    public void register() {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
