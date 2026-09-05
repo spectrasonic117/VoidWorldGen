@@ -21,29 +21,22 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:${paperVersion}-R0.1-SNAPSHOT")
 }
 
 jar {
     destinationDirectory = file("${rootDir}/out")
-	archiveFileName = "${rootProject.name}-${version}.jar"
+	archiveFileName = "${rootProject.name}.jar"
 }
 
-def targetJavaVersion = 21
+def targetJavaVersion = "${javaVersion}"
+
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
     sourceCompatibility = javaVersion
     targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-
-    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
-        options.release.set(targetJavaVersion)
     }
 }
 
